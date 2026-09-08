@@ -167,5 +167,7 @@ Open `http://localhost:5173`. Vite proxies `/api/*` requests to the backend on p
 
 - **Frontend:** https://1fi-marketplace-kappa.vercel.app/
 - **Backend API:** https://onefi-marketplace-nishant.onrender.com
+- **YouTube Explanation Video:** https://youtu.be/xTLsORMEG00
+- **GitHub Repository:** https://github.com/NishantA9/1fi-marketplace 
 
 Note: the backend is hosted on Render's free tier, which spins down after periods of inactivity. If the app has been idle, the first request may take 20–50 seconds while it wakes up.

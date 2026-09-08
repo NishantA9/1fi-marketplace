@@ -10,7 +10,6 @@ import { API_BASE, resolveImage } from '../api.js';
 const inr = (n) => `₹${n.toLocaleString('en-IN')}`;
 
 // The DetailHeader component renders a header with a back button and the product title.
-
 function DetailHeader({ title }) {
   const navigate = useNavigate();
   return (
