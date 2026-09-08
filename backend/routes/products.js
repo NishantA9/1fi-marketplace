@@ -25,6 +25,10 @@ function serializeProduct(product, variants) {
   };
 }
 
+// Below are the two express api endpoints for products, one for listing all products and another for fetching a single product by its slug. 
+// The first endpoint returns a summary of products without EMI plans, 
+// while the second endpoint includes EMI plans for each variant of the product.
+
 // GET /api/products - list all products with their variants (summary, no EMI plans)
 router.get('/', (req, res) => {
   const products = db.prepare('SELECT * FROM products ORDER BY id').all();

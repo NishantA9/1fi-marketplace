@@ -23,8 +23,7 @@ app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
-app.use('/api/products', productsRouter);
-
+app.use('/api/products', productsRouter); // Mount the products router
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`1Fi Marketplace API running on http://localhost:${PORT}`);

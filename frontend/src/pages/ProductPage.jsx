@@ -4,7 +4,12 @@ import DeviceFrame from '../components/DeviceFrame.jsx';
 import EMIPlanCard from '../components/EMIPlanCard.jsx';
 import { API_BASE, resolveImage } from '../api.js';
 
+// This code fetches from the backend API to display a single product's details, including its variants and EMI plans. 
+// It also allows users to select a variant and an EMI plan, and proceed with the selected plan.
+
 const inr = (n) => `₹${n.toLocaleString('en-IN')}`;
+
+// The DetailHeader component renders a header with a back button and the product title.
 
 function DetailHeader({ title }) {
   const navigate = useNavigate();
@@ -21,6 +26,8 @@ function DetailHeader({ title }) {
     </div>
   );
 }
+
+// The ProductPage component fetches and displays the details of a single product, including its variants and EMI plans.
 
 export default function ProductPage() {
   const { slug } = useParams();
@@ -47,6 +54,9 @@ export default function ProductPage() {
       .catch(() => setStatus('error'));
   }, [slug]);
 
+  // The component handles three states: loading, error, and ready.
+  // In the loading state, it shows a skeleton UI. In the error state, it shows an error message. 
+  // In the ready state, it displays the product details, variant selection, and EMI plan selection.
   if (status === 'loading') {
     return (
       <DeviceFrame>
@@ -69,15 +79,21 @@ export default function ProductPage() {
     );
   }
 
+  // The component finds the selected variant and EMI plan based on the current state.
   const variant = product.variants.find((v) => v.id === variantId) || product.variants[0];
   const plan = variant.emiPlans.find((p) => p.id === planId) || variant.emiPlans[0];
 
+  // The handleVariantChange function updates the selected variant 
+  // and resets the selected EMI plan and confirmation state when a new variant is selected.
   const handleVariantChange = (v) => {
     setVariantId(v.id);
     setPlanId(v.emiPlans[0]?.id ?? null);
     setConfirmed(null);
   };
 
+  // The component renders the product details, including the image, name, brand, storage, color, price, and discount.
+  // It also renders buttons for selecting different variants and a list of EMI plans for the selected variant.
+  // Finally, it includes a button to proceed with the selected EMI plan and shows a confirmation message if a plan is confirmed.
   return (
     <DeviceFrame>
       <DetailHeader title={product.name} />

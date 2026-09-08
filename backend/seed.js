@@ -12,6 +12,9 @@ const TENURES = [
   { months: 60, rate: 10.5 },
 ];
 
+// Now below code contains the seed function that populates the database with sample products, variants, and EMI plans. 
+
+// The buildPlans function calculates the monthly EMI amounts based on the price and interest rate for each tenure.
 function buildPlans(price) {
   const CASHBACK = 7500;
   return TENURES.map(({ months, rate }) => {
@@ -27,6 +30,7 @@ function buildPlans(price) {
   });
 }
 
+// It first clears any existing data and then inserts a predefined catalog of products. 
 function seed() {
   initSchema();
 
@@ -44,6 +48,7 @@ function seed() {
      VALUES (?, ?, ?, ?, ?)`
   );
 
+// Each product has multiple variants, and each variant has associated EMI plans based on the standard tenures defined above. 
 
 const catalog = [
     {
