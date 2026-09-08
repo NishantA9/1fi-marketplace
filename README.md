@@ -1,5 +1,7 @@
 # 1Fi Marketplace
 
+_Built by Nishant Acharekar as part of the 1Fi SDE Intern assignment._
+
 A full-stack marketplace feature built for the 1Fi Shop page — browse smartphones and buy them on EMI plans backed by mutual funds, without liquidating investments.
 
 Built for the **1Fi SDE Intern assignment**. The `Shop` tab of the app now has three entries: `Top Brands` and `Nearby Stores` (placeholders, per the assignment scope) and **`1Fi Marketplace`**, which is fully implemented here.
@@ -161,11 +163,9 @@ Open `http://localhost:5173`. Vite proxies `/api/*` requests to the backend on p
 - `/` or `/shop` — the Shop screen: hero banner, then **Top Brands** / **Nearby Stores** / **1Fi Marketplace** as switchable tabs (matching the real app's tab-toggle pattern). Top Brands and Nearby Stores show a coming-soon state; 1Fi Marketplace loads the product list live from the API.
 - `/products/iphone-17-pro`, `/products/samsung-s24-ultra`, `/products/oneplus-12` — product detail pages with variant switching and EMI plan selection
 
-## Design notes
+## Live Deployment
 
-The UI is wrapped in a phone-frame shell (`AppShell.jsx`) styled to sit naturally inside the existing 1Fi app rather than read as a standalone website — the purple header/logo mark echoes the 1Fi brand, and the Shop tab keeps `Top Brands` / `Nearby Stores` visually present but disabled, matching the assignment's scope (blank for now, fully wired for 1Fi Marketplace).
+- **Frontend:** https://1fi-marketplace-kappa.vercel.app/
+- **Backend API:** https://onefi-marketplace-nishant.onrender.com
 
-## Deployment
-
-- **Backend:** deploy `backend/` to Render (or similar) as a Node web service. SQLite works fine for a demo but note that most PaaS free tiers use an ephemeral filesystem — the DB will reseed on restart, which is fine here since seed data is deterministic.
-- **Frontend:** deploy `frontend/` to Vercel. Set the API base URL via an environment variable (e.g. `VITE_API_URL`) pointing at the deployed backend, and update the `fetch` calls in `MarketplacePage.jsx` / `ProductPage.jsx` accordingly, or configure a rewrite/proxy on Vercel to the Render backend.
+Note: the backend is hosted on Render's free tier, which spins down after periods of inactivity. If the app has been idle, the first request may take 20–50 seconds while it wakes up.
