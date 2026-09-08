@@ -1,0 +1,16 @@
+{
+  "name": "1fi-marketplace-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend API for 1Fi Marketplace - products with EMI plans backed by mutual funds",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
